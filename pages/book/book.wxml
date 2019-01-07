@@ -1,0 +1,15 @@
+<!--pages/book/book.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="search-container" bind:tap="handleSkipToSearch">
+      <image src="/images/icon/search.png" />
+      <text>搜索书籍</text>
+    </view>
+  </view>
+  <view class="main-container">
+    <image class="sub-title" src="/images/book/quality.png" />
+    <view class="books-container">
+      <book wx:for="{{bookList}}" wx:key="id" wx:for-item="book" book="{{book}}" />
+    </view>
+  </view>
+</view>

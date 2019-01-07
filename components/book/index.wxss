@@ -1,0 +1,60 @@
+/* components/book/index.wxss */
+.book{
+  position: relative; 
+  display: flex;
+  flex-direction: column;
+  width: 240rpx;
+  height: 360rpx;
+  margin-top: 30rpx;
+  box-shadow: 2px 2px 3px #e3e3e3;
+}
+
+.book-img{
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+}
+
+.book-description{
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15rpx 10rpx 8rpx 15rpx;
+  background-color: #ffffff;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  font-size: 24rpx;
+}
+
+.book-title{
+  width: 100%;
+  margin-bottom: 5rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.book-author{
+  width: 100%;
+  margin-bottom: 10rpx;
+  font-size: 20rpx;
+  line-height: 20rpx;
+  color: #999999;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.book-footer{
+  font-size: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.book-footer text{
+  color: #666666;
+}

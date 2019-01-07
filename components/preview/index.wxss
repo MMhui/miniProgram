@@ -1,0 +1,46 @@
+/* components/preview/index.wxss */
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 330rpx;
+  background-color: #ffffff;
+}
+.head{
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  justify-content: space-between;
+}
+.tag > view{
+  margin-left: 20rpx;
+  margin-top: -2rpx;
+  height: 40rpx;  
+  width: 72rpx ;
+  font-size: 24rpx;
+  background-color: #f7f7f7;
+}
+.like{
+  margin-top: 4rpx;
+  margin-right: 4rpx;
+}
+.other-img{
+  width: 100%;
+  height: 240rpx;
+}
+
+.music-img{
+  border-radius: 50%;
+  width: 240rpx;
+  height: 240rpx;
+}
+
+.text{
+  padding: 30rpx;
+  height: 130rpx;
+  font-size: 28rpx;
+  color: #666666;
+  overflow:  hidden;
+}

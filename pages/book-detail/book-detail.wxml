@@ -1,0 +1,94 @@
+<!--pages/book-detail/book-detail.wxml-->
+<view class="container">
+  <view class="header">
+    <image src="{{book.image}}" />
+    <text class="title">{{book.title}}</text>
+    <text class="author">{{book.author}}</text>
+  </view>
+  <view class="sub-container">
+    <text class="headline">短评</text>
+    <text class="no-comment" wx:if="{{loadNoComment}}">还没有短评</text>
+    <view class="comments-container">
+      <tag wx:for="{{util.limit(comments, 15)}}" wx:key="{{item.content}}" text="{{item.content}}">
+        <text class="num">+{{item.nums}}</text>
+      </tag>
+    </view>
+  </view>
+
+  <view class="sub-container">
+    <text class="headline">内容简介</text>
+    <text decode="{{true}}" class="content">{{util.format(book.summary) || ''}}</text>
+  </view>
+
+  <view class="sub-container">
+    <text class="headline">书本信息</text>
+    <view class="info-contaner">
+      <view class="row">
+        <text class="left">出版社</text>
+        <text class="right">{{book.publisher}}</text>
+      </view>
+      <view class="row">
+        <text class="left">出版年</text>
+        <text class="right">{{book.pubdate}}</text>
+      </view>
+      <view class="row">
+        <text class="left">页数</text>
+        <text class="right">{{book.pages}}</text>
+      </view>
+      <view class="row">
+        <text class="left">定价</text>
+        <text class="right">{{book.price}}</text>
+      </view>
+      <view class="row">
+        <text class="left">装帧</text>
+        <text class="right">{{book.binding}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="post-container" wx:if="{{!posting}}">
+  <view class="post-fake" bind:tap="handleShowPosting">
+    <text>短评：仅作展示，不能输入</text>
+  </view>
+  <view class="like-container">
+    <like bind:like="onLike" class="like" like="{{likeStatus}}" count="{{likeCount}}" />
+    <button class="share-btn" open-type="share">
+      <image class="share" src="/images/icon/share.png" />
+    </button>
+  </view>
+</view>
+
+<mask-cmp wx:if="{{posting}}" />
+
+<view class="posting-container" wx:if="{{posting}}">
+  <view class="post-header">
+    <text class="tips">{{comments.length ? '尽可点击标签+1' : '暂无标签'}}</text>
+    <text class="cancel" bind:tap="handleHidePosting">取消</text>
+  </view>
+  <view class="comments-container">
+    <block wx:for="{{util.limit(comments, 3)}}" wx:key="{{item.content}}">
+      <tag text="{{item.content}}" bind:tagTap="handleTagTap">
+        <text class="num">+{{item.nums}}</text>
+      </tag>
+    </block>
+  </view>
+  <input class="comment-input" type="text" focus="{{posting}}" maxlength="{{12}}" placeholder="短评最多12个字" bind:confirm="handleSendComment" confirm-type="send"></input>
+</view>
+
+<wxs module="util">
+  var limit = function(array, length) {
+    return array.slice(0, length);
+  };
+  var format = function(text){
+    if(!text){
+      return false;
+    }
+    var reg = getRegExp('\\\\n','g');
+    return text.replace(reg,'\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+  };
+  module.exports = {
+    limit: limit,
+    format: format
+  }
+</wxs>

@@ -1,0 +1,58 @@
+<!--pages/search/search.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="search-container">
+      <image class="icon" src="../../images/icon/search.png" />
+      <input placeholder="书籍名" placeholder-class="placeholder" class="search-input" bind:confirm="handleSearch" bindinput="handleInput" auto-focus="{{true}}" value="{{searchParams.q}}" />
+      <image bind:tap="handleClearInput" class="cancel-icon" src="../../images/icon/cancel.png" />
+    </view>
+    <text class="cancel" bind:tap="handleCancel">取消</text>
+  </view>
+
+  <view class="sub-container" wx:if="{{loadSearchOptions}}">
+    <view class="search-data-container history">
+      <view class="title">
+        <view class="chunk"></view>
+        <text>历史搜索</text>
+      </view>
+      <view class="tags-container">
+        <tag wx:if="{{historyKeywords.length}}" wx:for="{{util.limit(historyKeywords, 10)}}" wx:key="{{item}}" bind:tagTap="handleTagTap" text="{{item}}" />
+        <text class="tips" wx:if="{{noHistoryKeyword}}">暂无历史搜索</text>
+      </view>
+    </view>
+    <view class="search-data-container hot-search">
+      <view class="title">
+        <view class="chunk"></view>
+        <text>热门搜索</text>
+      </view>
+      <view class="tags-container">
+        <text class="tips" wx:if="{{noHotKeyword}}">暂无热门搜索</text>
+        <tag wx:if="{{hotKeywords.length}}" wx:for="{{util.limit(hotKeywords, 10)}}" wx:key="{{item}}" bind:tagTap="handleTagTap" text="{{item}}" />
+      </view>
+    </view>
+  </view>
+
+  <scroll-view
+    wx:if="{{books.length}}"
+    class="scroll-view"
+    scroll-y
+    enable-back-to-top="{{true}}"
+    scroll-with-animation="{{true}}"
+    lower-threshold="40"
+    bind:scrolltolower="handleLoadMore">
+    <view class="book-container">
+      <book wx:for="{{books}}" wx:key="id" book="{{item}}" showLike="{{false}}" />
+    </view>
+  </scroll-view>
+  <text class="no-result" wx:if="{{noResult}}">没有搜索到数据</text>
+  <loading wx:if="{{showLoading}}" />
+</view>
+
+<wxs module="util">
+  var limit = function(array, length) {
+    return array.slice(0, length);
+  };
+  module.exports = {
+    limit: limit
+  }
+</wxs>

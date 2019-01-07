@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "tag": "/components/tag/index",
+    "like": "/components/like/index",
+    "book": "/components/book/index",
+    "loading": "/components/loading/index"
+  }
+}

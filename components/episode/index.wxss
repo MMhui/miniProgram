@@ -1,0 +1,40 @@
+/* components/epsoid/index.wxss */
+.epsoid{
+  display: flex;
+}
+.epsoid-left{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.epsoid-plain{
+  font-size: 32rpx;
+}
+
+.epsoid-index{
+  font-size: 60rpx;
+  font-weight: 800;
+  margin-right: 14rpx;
+}
+
+.epsoid-line{
+  height: 44rpx;
+  margin-right: 14rpx;
+  border-left: 2rpx solid black;
+}
+
+.epsoid-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.epsoid-month{
+  font-size: 24rpx;
+  line-height: 24rpx;
+  margin-bottom: 4rpx;
+}
+.epsoid-year{
+  font-size: 20rpx;
+}

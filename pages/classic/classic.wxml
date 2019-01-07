@@ -1,0 +1,16 @@
+<!--pages/classic/classic.wxml-->
+<view class="container">
+  <view class="header">
+    <epsoid class="epsoid" index="{{classic.index}}" />
+    <view class="like-container">
+      <like bind:like="handleLikeTap" count="{{count}}" like="{{like}}" />
+      <button class="share-btn" open-type="share">
+        <image class="share" src="/images/icon/share.png" />
+      </button>
+    </view>
+  </view>
+  <movie wx:if="{{classic.type === 100}}" img="{{classic.image}}" content="{{classic.content}}" />
+  <music wx:if="{{classic.type === 200}}" img="{{classic.image}}" content="{{classic.content}}" src="{{classic.url}}" title="{{classic.title}}" />
+  <essay wx:if="{{classic.type === 300}}" img="{{classic.image}}" content="{{classic.content}}" />
+  <nav class="nav" latest="{{latest}}" first="{{first}}" title="{{classic.title}}" bind:left="handleLeftTap" bind:right="handleRightTap" />
+</view>

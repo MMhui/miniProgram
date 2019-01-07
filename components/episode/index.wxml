@@ -1,0 +1,12 @@
+<!--components/epsoid/index.wxml-->
+<view class="epsoid">
+  <view class="epsoid-left">
+    <text class="epsoid-plain">No.</text>
+    <text class="epsoid-index">{{_index}}</text>
+    <view class="epsoid-line"></view>
+  </view>
+  <view class="epsoid-right">
+    <text class="epsoid-month">{{month}}</text>
+    <text class="epsoid-year">{{year}}</text>
+  </view>
+</view>

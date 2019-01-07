@@ -1,0 +1,9 @@
+<!--components/preview/index.wxml-->
+<view class="container" bind:tap="handleClassicTap">
+  <view class="head">
+    <tag text="{{typeText}}" class="tag" />
+    <like class="like" read-only="{{true}}" like="{{true}}" count="{{classic.fav_nums}}" />
+  </view>
+  <image class="{{classic.type==200?'music-img':'other-img'}}" src="{{classic.image}}" />
+  <text class="text">{{classic.content}}</text>
+</view>
