@@ -4,7 +4,7 @@
     <epsoid class="epsoid" index="{{classic.index}}" />
     <view class="like-container">
       <like bind:like="handleLikeTap" count="{{count}}" like="{{like}}" />
-      <button class="share-btn" open-type="share">
+      <button class="share-btn" open-type="share" hover-class="none">
         <image class="share" src="/images/icon/share.png" />
       </button>
     </view>
